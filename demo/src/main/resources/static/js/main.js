@@ -57,30 +57,38 @@ $(document).ready(function () {
 
     var modal        = document.getElementById('modal'),
         modalContent = document.querySelector('.modal-content'),
-        openModal    = document.querySelector('.js-open-modal'),
+        openModalBtns = document.querySelectorAll('.js-open-modal'),
         closeModal   = document.querySelectorAll('.modal, .modal-close');
 
     // Solo activar si el modal existe
-    if (modal && modalContent && openModal) {
+    if (modal && modalContent && openModalBtns.length > 0) {
 
-        openModal.addEventListener('click', function () {
-            modal.classList.add('is-visible');
+        // TODOS los botones con clase js-open-modal abren el mismo modal
+        openModalBtns.forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                modal.classList.add('is-visible');
+            });
         });
 
+        // Cerrar haciendo click en el fondo oscuro o en la X
         closeModal.forEach(function (el) {
             el.addEventListener('click', function () {
                 modal.classList.remove('is-visible');
             });
         });
 
+        // Evitar que el click dentro del contenido cierre el modal
         modalContent.addEventListener('click', function (event) {
             event.stopPropagation();
         });
 
-        setTimeout(function () {
-            modal.style.display = 'block';
-        }, 250);
+        // (Opcional) que aparezca automático después de unos ms
+        // setTimeout(function () {
+        //     modal.style.display = 'block';
+        // }, 250);
     }
+
 
 
 /* --------------------------------------------------------------------------

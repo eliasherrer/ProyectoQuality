@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - SAV12</title>
+
+    <style>
+        body {
+            background: #eef1f4;
+            font-family: 'Helvetica', sans-serif;
+        }
+
+        .register-card {
+            background: white;
+            padding: 35px;
+            max-width: 750px;
+            margin: 40px auto;
+            border-radius: 18px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .role-selector {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .role-box {
+            flex: 1;
+            border: 2px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            margin: 0 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.25s;
+            font-weight: bold;
+        }
+
+        .role-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .role-selected {
+            border-color: #4285F4 !important;
+            background: #e8f0fe;
+            color: #174ea6;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: #fafafa;
+            transition: 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: #4285F4;
+            background: white;
+            outline: none;
+        }
+
+        .button-register {
+            background: linear-gradient(90deg, #4a90e2, #6a5af9);
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 17px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.25s;
+            margin-top: 15px;
+        }
+
+        .button-register:hover {
+            opacity: 0.85;
+        }
+
+        .login-link {
+            margin-top: 15px;
+            text-align: center;
+            display: block;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="register-card">
+
+    <h1>Crear Cuenta</h1>
+    <p class="subtitle">Selecciona tu tipo de cuenta y completa tus datos.</p>
+
+    <!-- SELECTOR DE ROLES -->
+    <div class="role-selector">
+        <div class="role-box" data-role="USUARIO">👤 Usuario</div>
+        <div class="role-box" data-role="ADMIN">⚙️ Administrador</div>
+        <div class="role-box" data-role="TECNICO">🔧 Técnico</div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <form th:action="@{/registro}" th:object="${registro}" method="post">
+
+        <input type="hidden" id="tipoCuenta" th:field="*{rol}" required>
+
+        <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" th:field="*{nombre}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" th:field="*{correo}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" th:field="*{password}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Confirmar contraseña</label>
+            <input type="password" th:field="*{password2}" required>
+        </div>
+
+        <button class="button-register" type="submit">Registrarme</button>
+    </form>
+
+    <a href="/login" class="login-link">¿Ya tienes cuenta? Inicia sesión</a>
+
+</div>
+
+
+<script>
+    
+    const boxes = document.querySelectorAll('.role-box');
+    const rolInput = document.getElementById('tipoCuenta');
+
+    boxes.forEach(box => {
+        box.addEventListener('click', () => {
+            boxes.forEach(b => b.classList.remove('role-selected'));
+            box.classList.add('role-selected');
+            rolInput.value = box.dataset.role;
+        });
+    });
+</script>
+
+</body>
+</html>

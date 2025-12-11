@@ -827,6 +827,99 @@ h1 {font-size:30px;}
 }
 
 }
+/* ===========================
+   MODAL SAV12
+   =========================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.55);
+    z-index: 9999;
+}
+
+/* Cuando se abre */
+.modal.is-visible {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    max-width: 700px;
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    position: relative;
+    animation: modalFadeIn .25s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 28px;
+    background: #eee;
+    border: none;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.reporte-form input,
+.reporte-form textarea,
+.reporte-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.reporte-form input:focus,
+.reporte-form textarea:focus,
+.reporte-form select:focus {
+    border-color: #6ab04c;
+    outline: none;
+}
+
+.reporte-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.button-green {
+    background: #6ab04c;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.button-green:hover {
+    background: #4e8f35;
+}
+
 
 /* Media Queries for iPad in Portrait */
 
@@ -852,11 +945,4 @@ and (orientation : portrait) {
 .picture {display: none;}
 
 .page1 .button-white {display: none;}
-
-
-
- }
-
-
-
-
+}

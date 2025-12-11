@@ -57,9 +57,9 @@
 
         <!-- Menu -->
         <ul id="nav">
-            <li><a href="#">Registrarte</a></li>
-            <li><a href="#">Iniciar sesión</a></li>
-        </ul>
+    <li><a href="/registro">Registrarte</a></li>
+    <li><a href="/login">Iniciar sesión</a></li>
+</ul>
 
     </nav>
 </div>
@@ -121,7 +121,8 @@
                     Priorización, cálculo automático del tiempo límite y alertas de vencimiento.
                 </p>
 
-                <a class="js-open-modal button-green">Levantar reporte o dar seguimiento</a>
+                <a href="/levantar-reporte" class="button-green">Levantar reporte o dar seguimiento</a>
+
             </div>
 
         </div>
@@ -154,20 +155,38 @@
 
 
 
-<!-- ⭐⭐⭐ MODAL COMPLETO Y FUNCIONAL ⭐⭐⭐ -->
+
+<!-- MODAL EXPLICATIVO -->
 <div id="modal" class="modal">
     <div class="modal-content">
 
-        <span class="modal-close">&times;</span>
+        <button class="modal-close">&times;</button>
 
         <h2>¿Cómo funciona SAV12?</h2>
         <p>
-            SAV12 permite dar seguimiento completo al ciclo de vida de una incidencia:
-            registro, asignación, monitoreo y cierre.
+            SAV12 es una plataforma para registrar, priorizar y dar seguimiento
+            a incidencias técnicas dentro de una organización.
         </p>
 
-        <p>
-            Incluye SLA, tiempos límite, alertas automáticas y panel de control de desempeño.
+        <h3>Flujo básico</h3>
+        <ol>
+            <li><strong>Registro de incidencia:</strong> el usuario describe el problema.</li>
+            <li><strong>Clasificación:</strong> se asigna prioridad y categoría.</li>
+            <li><strong>Asignación:</strong> el sistema asigna la incidencia a un técnico.</li>
+            <li><strong>Seguimiento:</strong> se registran avances y cambios de estado.</li>
+            <li><strong>Cierre:</strong> se documenta la solución y se mide el tiempo (SLA).</li>
+        </ol>
+
+        <h3>Roles principales</h3>
+        <ul>
+            <li><strong>Usuario:</strong> reporta incidencias y consulta el estado.</li>
+            <li><strong>Técnico:</strong> atiende y actualiza los reportes.</li>
+            <li><strong>Administrador:</strong> configura prioridades, SLAs y usuarios.</li>
+        </ul>
+
+        <p class="modal-note">
+            Esta es una versión de demostración de la plataforma SAV12.
+            Próximamente se integrarán formularios reales para levantar reportes.
         </p>
 
     </div>
